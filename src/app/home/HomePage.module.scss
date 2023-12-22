@@ -1,0 +1,9 @@
+
+@import "~/src/scss/index.scss";
+
+.container_game{
+padding: 2rem;
+    @include medium{
+        padding: 5rem;
+    }
+}
