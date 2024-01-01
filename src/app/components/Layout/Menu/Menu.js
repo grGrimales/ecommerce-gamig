@@ -6,12 +6,14 @@ import { map } from "lodash";
 import Link from "next/link";
 import { Button, Icon, Image, Input } from "semantic-ui-react";
 import classNames from "classnames";
+import { useRouter } from "next/navigation";
 const platformCtrl = new Platform();
 
 export function MenuPage({ isOpenSearch }) {
   const [platforms, setPlaforms] = useState(null);
-const [showSearch, setShowSearch] = useState(false);
-console.log(showSearch)
+const [showSearch, setShowSearch] = useState(isOpenSearch);
+const [searchText, setSearchText] = useState("");
+const router = useRouter();
 const openCloseSearch = () => setShowSearch(!showSearch);
   useEffect(() => {
     try {
@@ -24,6 +26,25 @@ const openCloseSearch = () => setShowSearch(!showSearch);
       console.log(error);
     }
   }, []);
+
+
+
+  useEffect(() => {
+  searchText && setSearchText(router.query.s);
+  document.getElementById('search-games').focus()
+
+  console.log(searchText, router.query)
+  }, [router.query]);
+
+
+const onSearch = (text) => {
+  console.log("Buscando...", text);router.replace(`/search?s=${text}`);
+
+  console.log(router)
+}
+
+
+
   return (
     <div className={styles.platforms}>
       {map(platforms, (platform, index) => (
@@ -48,6 +69,7 @@ const openCloseSearch = () => setShowSearch(!showSearch);
           placeholder="Buscador"
           className={styles.input}
           focus={true}
+          onChange={(_, data) => onSearch(data.value)}
         />
         <Icon
           name="close"

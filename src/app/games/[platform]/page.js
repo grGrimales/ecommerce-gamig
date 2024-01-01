@@ -5,6 +5,9 @@ import { BasicLayout } from "@/layouts";
 import styles from "../Games.module.scss";
 import { NoResult } from "../../components/Shared/NoResult/NoResult";
 import { Pagination } from "../../components/Shared/Pagination/Pagination";
+
+
+
 async function getData(platform) {
   const platformCtrl = new Platform();
   const responsePlatform = await platformCtrl.getBySlug(platform);
@@ -12,6 +15,8 @@ async function getData(platform) {
   const page = 1;
   const gameCtrl = new Game();
   const responseGame = await gameCtrl.getGmaesByPlatformSlug(platform, page);
+
+  console.log(responseGame, 'responseGame')
   return {
     props: {
       platform: responsePlatform,
@@ -22,9 +27,13 @@ async function getData(platform) {
 }
 
 export default async function PlatformPage({ params, searchParams }) {
+
+  console.log('searchParams', searchParams)
   const data = await getData(params.platform);
 
   const {pagination} = data.props;
+
+  console.log('pagination', pagination)
 const hasProducts =  data.props.game.length > 0;
   console.log(data.props.game);
 
@@ -40,7 +49,7 @@ const hasProducts =  data.props.game.length > 0;
                 <>
                  <GridGames games={data.props.game}/>
                  <Separator  height={30}/>
-                <Pagination  pageSize={pagination.pageSize} totalPages={pagination.pageCount}/> 
+                <Pagination  currentPage={pagination.page}  totalPages={pagination.pageCount}/> 
                 </>
               ) : (
                 <>
