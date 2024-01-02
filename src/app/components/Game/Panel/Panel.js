@@ -3,6 +3,7 @@
 import { Button, Container, Icon, Image } from "semantic-ui-react";
 import styles from "./Panel.module.scss";
 import { calcDiscountedPrice } from "@/utils/functions";
+import { WishlistIcon } from "../../Shared";
 export function Panel({ gameId, game }) {
 
   const buyPrice = calcDiscountedPrice(game.price, game.discount);
@@ -50,6 +51,8 @@ export function Panel({ gameId, game }) {
           </div>
 
           <Button primary fluid>Buy now</Button>
+
+          <WishlistIcon gameId={gameId} className={styles.heart} />
         </div>
       </div>
     </Container>

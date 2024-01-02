@@ -1,6 +1,6 @@
 import { Game } from '@/api';
 import { BasicLayout } from '@/layouts'
-import { HeaderWallpaper, Panel } from '../components/Game';
+import { HeaderWallpaper, Info, Media, Panel } from '../components/Game';
 import { Separator } from '../components/Shared/Separator/Separator';
 
 
@@ -29,6 +29,16 @@ console.log(data)
            <Panel gameId={data.props.game.id} game={data.props.game.attributes}/>
 
            <Separator height={50}/>
+
+           <Info game={data.props.game.attributes}/>
+
+           <Separator height={30}/>
+
+           <Media video={data.props.game.attributes.video} screenshots={data.props.game.attributes.screenshots.data} />
+           
+           <Separator height={30}/>
+
+
     </BasicLayout>
     </>
   )

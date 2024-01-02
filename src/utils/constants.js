@@ -11,6 +11,7 @@ export const ENV = {
         PLATFORM: '/platforms',
         ADDRESS: '/addresses',
         GAME: '/games',
+        WISHLIST: '/wishlist',
     },
     TOKEN: "token"
 }
