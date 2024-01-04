@@ -28,7 +28,7 @@ export async function authFetch(url, params) {
         };
 
         try {
-          return await fetch(url, paramsTemp);
+          return await fetch(url, paramsTemp, {next: { revalidate: 10 }});
         } catch (error) {
           return error;
         }

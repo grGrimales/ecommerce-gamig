@@ -36,9 +36,9 @@ export function GridGames({ games }) {
                   game.attributes.discount
                 )}
               </span>
-              <span></span>
             </div>
           </Link>
+          
         ))}
     </div>
   );

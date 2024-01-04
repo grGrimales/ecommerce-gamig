@@ -12,6 +12,7 @@ const platformsId = {
   nintendo: 2,
 };
 export default function HomePage() {
+
   return (
     <BasicLayout>
       <BannerLastGamePublished />

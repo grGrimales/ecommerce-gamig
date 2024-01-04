@@ -38,9 +38,6 @@
 .game_image{
     width: 100%;
     border-radius: 16px;
-@include max{
-    
-}
 
 }
 
@@ -48,6 +45,7 @@
     position: absolute;
     left: 10px;    
 }
+
 .price{
     font-size: 18px;
 }

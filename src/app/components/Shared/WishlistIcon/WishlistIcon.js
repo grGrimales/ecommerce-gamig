@@ -3,9 +3,50 @@
 'use client';
 import { Icon } from 'semantic-ui-react';
 import styles from './WishlistIcon.module.scss';
+import { Wishlist } from '@/api/wishlist';
+import { useEffect, useState } from 'react';
+import { useAuth } from '@/hooks';
+import { set } from 'lodash';
 
-export function WishlistIcon ({gameId, className}){
+
+const wishlistCtrl = new Wishlist();
+export function WishlistIcon ({gameId, className, removeCallback}){
+const {user} = useAuth();
+
+console.log(user)
+    const [isInWishlist, setIsInWishlist] = useState(null);
+useEffect(() => {
+(async () => {
+    try {
+        const response = await wishlistCtrl.check(user.id, gameId);
+        setIsInWishlist(response);
+        console.log(response)
+    } catch (error) {
+        console.log(error)
+        setIsInWishlist(false);
+    }
+})()}
+, [gameId]);
+
+const addWishList =  async  () => {
+    const response = await wishlistCtrl.add(user.id, gameId);
+    console.log(response)
+    setIsInWishlist(response);
+}
+
+const removeWishList = async () => {
+    try {
+        await wishlistCtrl.remove(isInWishlist.id);
+        setIsInWishlist(false);
+
+        if(removeCallback) removeCallback();
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+    if(isInWishlist === null) return null;
     return (
-       <Icon name="heart" className={`${styles.wishlistIcon} ${className ?  className : ''}`} />
+       <Icon name={isInWishlist ? "heart" : "heart outline"} onClick={ isInWishlist ? removeWishList : addWishList} className={`${styles.wishlistIcon} ${className ?  className : ''}`} />
     )
 }

@@ -4,9 +4,24 @@ import { Button, Container, Icon, Image } from "semantic-ui-react";
 import styles from "./Panel.module.scss";
 import { calcDiscountedPrice } from "@/utils/functions";
 import { WishlistIcon } from "../../Shared";
-export function Panel({ gameId, game }) {
+import { useCart } from "@/hooks";
+import { useState } from "react";
 
+export function Panel({ gameId, game }) {
+  const { addCart } = useCart();
+
+  const [loading, setLoading] = useState(false);
   const buyPrice = calcDiscountedPrice(game.price, game.discount);
+
+  const addCartWrapper = () => {
+    setLoading(true);
+    addCart(gameId);
+    setTimeout(() => {
+      setLoading(false);
+    }, 500);
+  };
+
+
   return (
     <Container className={styles.panel}>
       <div className={styles.imgContainer}>
@@ -40,17 +55,19 @@ export function Panel({ gameId, game }) {
                 </span>
 
                 <span className={styles.discount}>
-                    <Icon name="tag" />-{ game.discount}%
+                  <Icon name="tag" />-{game.discount}%
                 </span>
               </>
             )}
 
             <span className={styles.price}>
-                <Icon name="tag" />${buyPrice}
+              <Icon name="tag" />${buyPrice}
             </span>
           </div>
 
-          <Button primary fluid>Buy now</Button>
+          <Button primary fluid onClick={addCartWrapper} loading={loading}>
+            Buy now
+          </Button>
 
           <WishlistIcon gameId={gameId} className={styles.heart} />
         </div>

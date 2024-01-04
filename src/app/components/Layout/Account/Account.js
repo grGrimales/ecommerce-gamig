@@ -1,18 +1,14 @@
 "use client";
 import { useRouter } from "next/navigation";
 
-import { useAuth } from "@/hooks";
+import { useAuth, useCart } from "@/hooks";
 import styles from "./Account.module.scss";
 import { Button, Icon, Label } from "semantic-ui-react";
 import classNames from "classnames";
 
-
-const total = 5;
-
-
 export function AccountPage() {
   const { user } = useAuth();
-
+  const { total } = useCart();
   const router = useRouter();
 
   const goToLogin = () => router.push("/join/sign-in");
