@@ -33,14 +33,24 @@ export function CartProvider (props) {
         setTotal(cartCtrl.count());
         setCart(cartCtrl.getAll());
     }
+
+    const changeQuantityItem = (gameId, quantity) => {
+        cartCtrl.changeQuantity(gameId, quantity);
+        refreshCart();
+    }
+
+    const deleteItem = (gameId) => {
+        cartCtrl.deleteItem(gameId);
+        refreshCart();
+    }
     
     const data = {
         cart,
         total,
         addCart,
-        deleteItem: () =>{},
+        deleteItem,
         deleteAllItems: () =>{},
-        changeQuantityItem: () =>{},
+        changeQuantityItem,
     };
 
 

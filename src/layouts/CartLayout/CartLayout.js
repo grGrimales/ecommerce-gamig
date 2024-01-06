@@ -1,13 +1,13 @@
 "use client";
 
-import { Footer } from "@/app/components/Layout";
+import { Footer, HeaderCart } from "@/app/components/Layout";
 import { Separator } from "@/app/components/Shared/Separator/Separator";
-import { Container } from "semantic-ui-react";
+import { Container, Header } from "semantic-ui-react";
 
-export function CartLayout({ children }) {
+export function CartLayout({ children, step }) {
   return (
     <>
-      <p>ddd</p>
+      <HeaderCart step={step} />
       <Separator height={150} />
 
       <Container>{children}</Container>

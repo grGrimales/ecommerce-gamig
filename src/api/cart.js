@@ -34,4 +34,18 @@ export class Cart {
         });
         return count;
     }
+
+    changeQuantity(gameId, quantity) {
+        const cart = this.getAll();
+        const index = cart.findIndex((item) => item.id === gameId);
+        cart[index].quantity = quantity;
+        localStorage.setItem(ENV.CART, JSON.stringify(cart));
+    }
+
+    deleteItem(gameId) {
+        const cart = this.getAll();
+        const index = cart.findIndex((item) => item.id === gameId);
+        cart.splice(index, 1);
+        localStorage.setItem(ENV.CART, JSON.stringify(cart));
+    }
 }
