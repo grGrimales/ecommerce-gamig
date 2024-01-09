@@ -47,6 +47,7 @@ export function AuthProvider(props) {
   };
   const logout = () => {
     tokenCtrl.removeToken();
+    localStorage.removeItem('PaymentProcess');
     setUser(null);
     setToken(null);
   }

@@ -12,6 +12,8 @@ export const ENV = {
         ADDRESS: '/addresses',
         GAME: '/games',
         WISHLIST: '/wishlists',
+        PAYMENT_ORDER: '/payment-order',
+        ORDERS: '/orders',
     },
     TOKEN: "token",
     CART: "cart",

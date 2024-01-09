@@ -7,6 +7,7 @@ import {
   ChangePasswordForm,
   Info,
   ListAddresses,
+  Orders,
   Settings,
   Wishlist,
 } from "@/app/components/Account";
@@ -21,20 +22,23 @@ export default function AccountPage() {
   const { user, logout } = useAuth();
   const router = useRouter();
 
-  const [reload, setReload] = useState(false)
+  const [reload, setReload] = useState(false);
   if (!user) {
     router.push("/");
     return null;
   }
 
-
-  const onReload = () => { setReload(!reload);  console.log(reload)}
+  const onReload = () => {
+    setReload(!reload);
+    console.log(reload);
+  };
   const panes = [
     {
       menuItem: "My orders",
       render: () => (
         <Tab.Pane attached={false}>
-          <p>My orders</p>
+          <Orders />
+          <Separator height={80} />
         </Tab.Pane>
       ),
     },
@@ -42,7 +46,7 @@ export default function AccountPage() {
       menuItem: "Wish list",
       render: () => (
         <Tab.Pane attached={false}>
-        <Wishlist/>
+          <Wishlist />
           <Separator height={80} />
         </Tab.Pane>
       ),
@@ -51,14 +55,14 @@ export default function AccountPage() {
       menuItem: "Addresses",
       render: () => (
         <Tab.Pane attached={false}>
-         <AddAdress onReload={onReload} />
-         <ListAddresses reload={reload}  onReload={onReload}/>
-         <Separator height={80} />
+          <AddAdress onReload={onReload} />
+          <ListAddresses reload={reload} onReload={onReload} />
+          <Separator height={80} />
         </Tab.Pane>
       ),
     },
     {
-      menuItem: { key:"20", icon: "settings", content: "Settings" },
+      menuItem: { key: "20", icon: "settings", content: "Settings" },
       render: () => (
         <Tab.Pane attached={false}>
           <ChangeNameForm />
@@ -71,7 +75,7 @@ export default function AccountPage() {
       ),
     },
     {
-      menuItem: {key:"21", icon: "log out", content: "", onClick: logout },
+      menuItem: { key: "21", icon: "log out", content: "", onClick: logout },
       render: () => (
         <Tab.Pane attached={false}>
           <p>Logout</p>

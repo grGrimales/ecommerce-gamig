@@ -4,12 +4,14 @@ import { useCart } from "@/hooks";
 import { CartLayout } from "@/layouts";
 import { useEffect, useState } from "react";
 import { StepOne, StepTwo } from "../components/Cart";
-
+import { StepThree } from "../components/Cart/StepThree";
+import styles from './Cart.module.scss';
+import { Button, Icon } from "semantic-ui-react";
+import Link from "next/link";
 const gameCtrl = new Game();
 
 export default function CartPage({ searchParams }) {
 
-  console.log(searchParams)
   const { step = 1 } = searchParams;
   const currentStep = Number(step);
 
@@ -17,6 +19,8 @@ export default function CartPage({ searchParams }) {
 
   const { cart } = useCart();
 
+  const payment = JSON.parse(localStorage.getItem('PaymentProcess'));
+console.log(cart)
 
   useEffect(() => {
     (async () => {
@@ -34,13 +38,28 @@ export default function CartPage({ searchParams }) {
     })();
   }, [cart]);
 
+
+  if ((!cart  || cart.length === 0 ) && (payment == false || !payment) ) {
+    return (
+      <CartLayout step={step}>
+        <div className={styles.empty}>
+        <h2>Cart is empty</h2>
+        <Button as={Link} href="/" primary>
+        Add products to cart
+        <Icon name="shopping cart "  />
+        </Button>
+       
+        </div>
+      
+      </CartLayout>
+    );
+  }
+
   return (
-    <>
       <CartLayout step={step}>
         {currentStep === 1 && <StepOne games={games} />}
         {currentStep === 2 && <StepTwo games={games} />}
-        {currentStep === 3 && <p>3</p>}
+        {currentStep === 3 && <StepThree/>}
       </CartLayout>
-    </>
   );
 }

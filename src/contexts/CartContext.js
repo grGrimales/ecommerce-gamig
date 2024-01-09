@@ -43,13 +43,18 @@ export function CartProvider (props) {
         cartCtrl.deleteItem(gameId);
         refreshCart();
     }
+
+    const deleteAllItems = () => {
+        cartCtrl.deleteAllItems();
+        refreshCart();
+    }
     
     const data = {
         cart,
         total,
         addCart,
         deleteItem,
-        deleteAllItems: () =>{},
+        deleteAllItems,
         changeQuantityItem,
     };
 

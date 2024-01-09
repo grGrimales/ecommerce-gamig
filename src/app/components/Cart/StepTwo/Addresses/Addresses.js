@@ -10,6 +10,8 @@ const addressCtrl = new Address();
 export function Addresses({ addressesSelected, setAddressesSelected}) {
   const { user } = useAuth();
   const [addresses, setAddresses] = useState([]);
+
+
 console.log(addressesSelected)
   useEffect(() => {
     (async () => {
@@ -32,7 +34,7 @@ console.log(addressesSelected)
           <div 
           key={address.id}
            className={classNames(styles.address, {
-            [styles.active]: addressesSelected.id === address.id,
+            [styles.active]: addressesSelected?.id === address.id,
            })}
             onClick={() => setAddressesSelected(address)}>
             <p>

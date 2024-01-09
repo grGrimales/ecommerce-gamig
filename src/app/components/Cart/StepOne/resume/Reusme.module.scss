@@ -2,9 +2,15 @@
 
 
 .resume{
+
     h2{
         margin-bottom: 15px;
         font-size: 18px;
+        margin-top: 20px !important;
+
+        @include medium{
+            margin-top: 0;
+        }
     }
 
     a{

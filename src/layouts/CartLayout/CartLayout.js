@@ -11,6 +11,7 @@ export function CartLayout({ children, step }) {
       <Separator height={150} />
 
       <Container>{children}</Container>
+      
       <Separator height={70} />
       <Footer />
     </>

@@ -9,29 +9,21 @@ import { usePathname, useSearchParams } from 'next/navigation'
 
 export const Resume = ({ games }) => {
   const pathname = usePathname()
-  const searchParams = useSearchParams()
 
-  console.log(pathname)
-  console.log(searchParams)
   const router = useRouter();
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
-
-   
     let totals = {
       original: 0,
       discount: 0,
       price: 0,
     };
     games?.forEach((element) => {
-      console.log(element);
       const price = calcDiscountedPrice(
         element.attributes.price,
         element.attributes.discount
       );
-
-      console.log(price);
 
       totals = {
         original: totals.original + element.attributes.price * element.quantity,
@@ -47,6 +39,7 @@ export const Resume = ({ games }) => {
   }, [games]);
 
   const goToStepTwo = () => {
+    localStorage.setItem("PaymentProcess", "false")
     const url = `${pathname}?step=2`; 
     router.push(url);
   };

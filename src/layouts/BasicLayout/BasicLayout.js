@@ -4,6 +4,7 @@ import { Container } from "semantic-ui-react";
 import styles from "./BasicLayout.module.scss";
 import classNames from "classnames";
 import { Footer, TopBar } from "@/app/components/Layout";
+import { Separator } from "@/app/components/Shared/Separator/Separator";
 
 export function BasicLayout({
   children,
@@ -20,6 +21,7 @@ export function BasicLayout({
           {isContainer ? <Container>{children}</Container> : children}
         </div>
       </Container>
+      <Separator height={70} />
 
       <Footer />
     </>
