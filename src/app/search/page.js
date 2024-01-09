@@ -12,9 +12,7 @@ async function getData(params, searchParams) {
   const page = 1;
   const { s } = searchParams;
 
-  console.log(s, "s");
   const responseGame = await gameCtrl.searchGmes(s, page);
-  console.log(params, "params");
   return {
     props: {
       games: responseGame.data,
@@ -28,8 +26,7 @@ export default async function SearchPage({ params, searchParams }) {
   const data = await getData(params, searchParams);
   const { games, pagination, searchText } = data.props;
   const hasResult = games.length > 0;
-  console.log(data, "data");
-  console.log(searchParams, "searchParams");
+
   return (
     <>
       <BasicLayout relative isOpenSearch>

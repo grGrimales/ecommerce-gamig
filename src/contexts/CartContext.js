@@ -23,7 +23,6 @@ export function CartProvider (props) {
 
 
     const addCart = (gameId) => {
-        console.log(gameId)
         cartCtrl.add(gameId);
         refreshCart();
 

@@ -1,3 +1,5 @@
+
+'use client';
 import { Address as AddressCtrl} from "@/api";
 import { useAuth } from "@/hooks";
 import { map } from "lodash";
@@ -15,10 +17,8 @@ export function ListAddresses({reload, onReload}) {
   
   useEffect(() => {
     (async () => {
-      console.log(reload)
       const response = await addressCtrl.getAll(user.id);
       setAddresses(response.data);
-      console.log(response);
     })();
   }, [reload]);
 

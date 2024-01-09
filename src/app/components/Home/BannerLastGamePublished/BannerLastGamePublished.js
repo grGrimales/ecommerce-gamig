@@ -22,11 +22,9 @@ export function BannerLastGamePublished() {
     })();
   }, []);
   if (!game) return null;
-console.log(game.attributes)
   const wallpaper = game.attributes.wallpaper;
   const realeseDate = new Date(game.attributes.realeaseDate).toISOString();
   const price = calcDiscountedPrice(game.attributes.price, game.attributes.discount)
-  console.log(price)
   return (
     <div className={styles.container}>
       <Image src={wallpaper.data.attributes.url} className={styles.wallpaper} />

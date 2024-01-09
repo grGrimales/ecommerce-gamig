@@ -12,18 +12,13 @@ export function LatestGames({ title, limit = 9, platformId = null }) {
       try {
         const result = await gameCtrl.getLatestPublished({ limit, platformId });
         setGames(result.data);
-        console.log(games);
-        console.log(result.data)
+       
       } catch (error) {
         console.log(error);
       }
     })();
   }, []);
 
-
-  useEffect(() => {
-    console.log(games);
-  }, [games]);
   
   
   if (!games) return null;

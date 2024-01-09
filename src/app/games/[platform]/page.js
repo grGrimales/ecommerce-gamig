@@ -6,7 +6,16 @@ import styles from "../Games.module.scss";
 import { NoResult } from "../../components/Shared/NoResult/NoResult";
 import { Pagination } from "../../components/Shared/Pagination/Pagination";
 
+export async function generateMetadata(params){
+  const platformCtrl = new Platform();
+  const responsePlatform = await platformCtrl.getBySlug(params.params.platform);
 
+  return {
+    title: params.params.platform,
+   description: responsePlatform.attributes.title,
+ };
+
+} 
 
 async function getData(platform) {
   const platformCtrl = new Platform();
@@ -16,7 +25,6 @@ async function getData(platform) {
   const gameCtrl = new Game();
   const responseGame = await gameCtrl.getGmaesByPlatformSlug(platform, page);
 
-  console.log(responseGame, 'responseGame')
   return {
     props: {
       platform: responsePlatform,
@@ -27,38 +35,36 @@ async function getData(platform) {
 }
 
 export default async function PlatformPage({ params, searchParams }) {
-
-  console.log('searchParams', searchParams)
   const data = await getData(params.platform);
 
-  const {pagination} = data.props;
+  const { pagination } = data.props;
 
-  console.log('pagination', pagination)
-const hasProducts =  data.props.game.length > 0;
-  console.log(data.props.game);
+  const hasProducts = data.props.game.length > 0;
 
   return (
     <>
       <BasicLayout relative>
         <div className={styles.container_platform}>
-          <Separator  height={50}/>
-            <h2>{data.props.platform.attributes.title}</h2>
+          <Separator height={50} />
+          <h2>{data.props.platform.attributes.title}</h2>
 
-            {
-              hasProducts ? (
-                <>
-                 <GridGames games={data.props.game}/>
-                 <Separator  height={30}/>
-                <Pagination  currentPage={pagination.page}  totalPages={pagination.pageCount}/> 
-                </>
-              ) : (
-                <>
-              <NoResult text={`The category ${data.props.platform.attributes.title} does not have products yet`} />
-                </>
-              )
-            }
-          <Separator  height={100}/>
-
+          {hasProducts ? (
+            <>
+              <GridGames games={data.props.game} />
+              <Separator height={30} />
+              <Pagination
+                currentPage={pagination.page}
+                totalPages={pagination.pageCount}
+              />
+            </>
+          ) : (
+            <>
+              <NoResult
+                text={`The category ${data.props.platform.attributes.title} does not have products yet`}
+              />
+            </>
+          )}
+          <Separator height={100} />
         </div>
       </BasicLayout>
     </>

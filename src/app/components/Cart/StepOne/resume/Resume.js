@@ -34,7 +34,6 @@ export const Resume = ({ games }) => {
       };
     });
 
-    console.log(totals);
     setTotal(totals);
   }, [games]);
 

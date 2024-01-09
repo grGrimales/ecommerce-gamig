@@ -1,3 +1,4 @@
+"use client";
 
 import { Form } from 'semantic-ui-react';
 import styles from './ChangeNameForm.module.scss';

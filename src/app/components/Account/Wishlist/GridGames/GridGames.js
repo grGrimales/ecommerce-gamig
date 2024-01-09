@@ -6,7 +6,6 @@ import { Discount, WishlistIcon } from "@/app/components/Shared";
 import { calcDiscountedPrice } from "@/utils/functions";
 
 export function GridGames({ games, handleReload }) {
-  console.log(games);
   return (
     <div className={styles.gridGames}>
       {games.map((item) => {

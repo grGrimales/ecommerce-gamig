@@ -30,7 +30,6 @@ console.log(cart)
           const response = await gameCtrl.getGameById(item.id);
           data.push({ ...response.data, quantity: item.quantity });
         }
-        console.log(data);
         setGames(data);
       } catch (error) {
         console.error(error);

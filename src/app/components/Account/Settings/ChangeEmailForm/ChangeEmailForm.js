@@ -1,5 +1,6 @@
 
-"useClient"
+"use client";
+
 import { Form } from 'semantic-ui-react';
 
 import { useFormik } from 'formik';

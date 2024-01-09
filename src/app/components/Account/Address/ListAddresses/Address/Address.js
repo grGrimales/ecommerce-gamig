@@ -1,6 +1,7 @@
+
+'use client';
 import { Button, Confirm, Icon } from "semantic-ui-react";
 import styles from "./Address.module.scss";
-import { Basic } from "next/font/google";
 import { BasicModal } from "@/app/components/Shared";
 import { AddressForm } from "../../AddressForm";
 import { useState } from "react";

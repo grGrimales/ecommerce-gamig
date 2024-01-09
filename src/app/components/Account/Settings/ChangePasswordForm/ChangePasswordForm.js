@@ -1,5 +1,6 @@
 
-"useClient"
+"use client";
+
 import { User } from "@/api";
 import { Form } from "semantic-ui-react";
 import { InitialValues, ValidationSchema } from "./ChangePasswordForm.form";

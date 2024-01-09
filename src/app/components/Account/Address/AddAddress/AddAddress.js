@@ -1,4 +1,5 @@
-"useClient";
+'use client';
+
 import { useState } from "react";
 import styles from "./AddAddress.module.scss";
 import { Button } from "semantic-ui-react";
@@ -10,7 +11,6 @@ export function AddAdress({onReload}) {
 
   const onOpenClose = () => {
     setShow(!show);
-    console.log(show);
   };
   return (
     <>

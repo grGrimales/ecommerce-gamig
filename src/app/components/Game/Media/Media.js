@@ -6,8 +6,7 @@ import { Video } from "./Video";
 import { Gallery } from "./Gallery";
 
 export function Media({ video, screenshots }) {
-  console.log(video);
-  console.log(screenshots);
+
   return (
     <Container>
       <h2>Media</h2>

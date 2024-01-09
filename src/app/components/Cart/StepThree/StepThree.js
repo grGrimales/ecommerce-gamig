@@ -11,7 +11,6 @@ export const StepThree = () => {
   const payment = JSON.parse(localStorage.getItem('PaymentProcess'));
   const cart = JSON.parse(localStorage.getItem('cart'));
 
-  console.log(payment)
   const removeItem = () => {
     localStorage.removeItem('PaymentProcess');
   }

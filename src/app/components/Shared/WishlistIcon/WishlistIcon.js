@@ -13,14 +13,12 @@ const wishlistCtrl = new Wishlist();
 export function WishlistIcon ({gameId, className, removeCallback}){
 const {user} = useAuth();
 
-console.log(user)
     const [isInWishlist, setIsInWishlist] = useState(null);
 useEffect(() => {
 (async () => {
     try {
         const response = await wishlistCtrl.check(user.id, gameId);
         setIsInWishlist(response);
-        console.log(response)
     } catch (error) {
         console.log(error)
         setIsInWishlist(false);
@@ -30,7 +28,6 @@ useEffect(() => {
 
 const addWishList =  async  () => {
     const response = await wishlistCtrl.add(user.id, gameId);
-    console.log(response)
     setIsInWishlist(response);
 }
 

@@ -19,7 +19,6 @@ const openCloseSearch = () => setShowSearch(!showSearch);
     try {
       (async () => {
         const response = await platformCtrl.getAll();
-        console.log(response);
         setPlaforms(response.data);
       })();
     } catch (error) {
@@ -33,14 +32,11 @@ const openCloseSearch = () => setShowSearch(!showSearch);
   searchText && setSearchText(router.query.s);
   document.getElementById('search-games').focus()
 
-  console.log(searchText, router.query)
   }, [router.query]);
 
 
 const onSearch = (text) => {
   console.log("Buscando...", text);router.replace(`/search?s=${text}`);
-
-  console.log(router)
 }
 
 

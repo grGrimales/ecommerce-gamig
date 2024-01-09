@@ -14,8 +14,6 @@ export function HeaderCart({ step }) {
 
   const currentStep = Number(step);
 
-
-  console.log(step)
   return (
     <div className={styles.headerCart}>
       <div className={styles.left}>

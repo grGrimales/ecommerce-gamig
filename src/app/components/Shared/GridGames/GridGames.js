@@ -4,7 +4,6 @@ import { Discount } from "../Label";
 import { calcDiscountedPrice } from "@/utils/functions";
 
 export function GridGames({ games }) {
-  console.log(games);
   return (
     <div className={styles.gridGames}>
       {games &&

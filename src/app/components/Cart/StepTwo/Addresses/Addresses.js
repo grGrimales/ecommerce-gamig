@@ -12,13 +12,11 @@ export function Addresses({ addressesSelected, setAddressesSelected}) {
   const [addresses, setAddresses] = useState([]);
 
 
-console.log(addressesSelected)
   useEffect(() => {
     (async () => {
       try {
         const response = await addressCtrl.getAll(user.id);
 
-        console.log(response);
         setAddresses(response.data);
       } catch (error) {
         console.error(error);

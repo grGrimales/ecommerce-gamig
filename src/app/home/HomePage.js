@@ -11,9 +11,13 @@ const platformsId = {
   pc: 4,
   nintendo: 2,
 };
+
+
 export default function HomePage() {
 
   return (
+    <>
+    
     <BasicLayout>
       <BannerLastGamePublished />
       <Separator height={100} />
@@ -44,5 +48,9 @@ export default function HomePage() {
       <Separator height={100} />
 
     </BasicLayout>
+    
+    </>
+
+ 
   );
 }

@@ -17,8 +17,6 @@ export function AddressForm({ onClose, onReload, addressId, address }) {
     validationSchema: validationSchema(),
     validateOnChange: false,
     onSubmit: async(formData) => {
-      console.log('dddd', formData)
-     
     },
   });
 
