@@ -35,6 +35,7 @@ export class Platform {
         if(response.status !== 200) throw result;
         return  result.data[0];
     } catch (error) {
+        console.log(error);
         throw error;
     }
     }

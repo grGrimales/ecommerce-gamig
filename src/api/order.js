@@ -2,8 +2,11 @@ import { ENV, authFetch } from "@/utils";
 
 export class Order {
   async getAll(userId) {
+    console.log(
+      'sssss'
+    )
     try {
-      const filters = ` filters[user][id][$eq]=${userId}`;
+      const filters = `filters[user][id][$eq]=${userId}`;
 
       const sort = "sort[0]=createdAt:desc";
 
@@ -12,11 +15,14 @@ export class Order {
       const url = `${ENV.API_URL}${ENV.ENDPOINTS.ORDERS}?${urlParams}`;
 
       const response = await authFetch(url);
-      const data = await response.json();
-      if (response.status !== 200) throw data;
+      const data = await response?.json();
+
+      console.log(data)
+      if (response?.status !== 200) throw data;
       return data;
     } catch (error) {
-      throw error;
+      console.log(error);
+
     }
   }
 }

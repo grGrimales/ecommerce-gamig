@@ -1,10 +1,13 @@
 "use client";
-import { createContext, useState, useEffect } from "react";
-import { Token,  User } from "@/api";
+import { createContext, useState, useEffect, use } from "react";
+import { Platform, Token,  User } from "@/api";
+import { usePathname, useRouter } from "next/navigation";
 
 const tokenCtrl = new Token();
 
 const userCtrl = new User();
+const platformCtrl = new Platform();
+
 export const AuthContext = createContext();
 
 export function AuthProvider(props) {
@@ -14,6 +17,11 @@ export function AuthProvider(props) {
   const { children } = props;
 
 
+  const [menuItems, setMenuItems] = useState([])
+
+
+const router = useRouter();
+const pathname = usePathname()
   useEffect(() => {
     (async () => {
       const token = tokenCtrl.getToken();
@@ -31,6 +39,18 @@ export function AuthProvider(props) {
       }
     })();
   }, []);
+
+
+  useEffect(() => {
+    const loadPlatforms = async () => {
+      const response = await platformCtrl.getAll();
+      setMenuItems(response.data);
+    };
+  
+    loadPlatforms();
+
+  }, [])
+  
   
 
   const login = async (token) => {
@@ -45,11 +65,14 @@ export function AuthProvider(props) {
       setLoading(false);
     }
   };
+
   const logout = () => {
     tokenCtrl.removeToken();
     localStorage.removeItem('PaymentProcess');
     setUser(null);
     setToken(null);
+    const url = `${pathname}`; 
+    router.replace('/');
   }
 
   const updatedUser = (key, value) => {
@@ -64,6 +87,7 @@ export function AuthProvider(props) {
     login,
     logout,
     updatedUser,
+    menuItems,
   };
   if (loading) {
     return null;

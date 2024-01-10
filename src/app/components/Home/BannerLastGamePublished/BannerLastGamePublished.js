@@ -1,4 +1,6 @@
-import { use, useEffect, useState } from "react";
+
+'use client';
+import {  useEffect, useState } from "react";
 import styles from "./BannerLastGamePublished.module.scss";
 import { Game } from "@/api";
 import { Container, Image } from "semantic-ui-react";

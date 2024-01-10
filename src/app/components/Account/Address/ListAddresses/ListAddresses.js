@@ -17,8 +17,17 @@ export function ListAddresses({reload, onReload}) {
   
   useEffect(() => {
     (async () => {
-      const response = await addressCtrl.getAll(user.id);
-      setAddresses(response.data);
+
+      try {
+        const response = await addressCtrl.getAll(user.id);
+        console.log(response)
+       if(response){
+        setAddresses(response.data);
+       }
+      } catch (error) {
+        console.log(error)
+      }
+    
     })();
   }, [reload]);
 

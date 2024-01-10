@@ -18,7 +18,9 @@ export class Auth{
             if(response.status != 200 ) throw result;
             return result;
         } catch (error) {
+        console.log(error);
          throw error;   
+
         }
     }
 
@@ -39,6 +41,8 @@ export class Auth{
             if(response.status != 200 ) throw result;
             return result;
         } catch (error) {
+        console.log(error);
+
          throw error;   
             
         }

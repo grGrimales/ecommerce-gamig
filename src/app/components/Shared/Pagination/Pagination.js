@@ -13,7 +13,6 @@ export function Pagination({ currentPage, totalPages}) {
     useEffect(() => {
         if (router.isReady) {
             // Aquí puedes realizar acciones que dependen de que el router esté listo
-            console.log("Router is now ready:", router);
         }
     }, [router.isReady]);
     

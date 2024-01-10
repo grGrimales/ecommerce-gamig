@@ -3,7 +3,6 @@ import { ENV, authFetch } from "@/utils";
 export class Wishlist {
   async check(userId, gameId) {
 
-    console.log(gameId)
     try {
       const filterUser = `filters[user][id][$eq][0]=${userId}`;
       const filterGame = `filters[game][id][$eq]=${gameId}`;
@@ -13,7 +12,6 @@ export class Wishlist {
 
       const response = await authFetch(url);
       const result = await response.json();
-console.log(result)
       if (response.status !== 200) throw result;
 
       if (result.data.length === 0) return false;
@@ -21,7 +19,6 @@ console.log(result)
       return result.data[0];
     } catch (error) {
       console.log(error);
-      throw new Error(error);
     }
   }
 
@@ -49,7 +46,6 @@ console.log(result)
       return result.data;
     } catch (error) {
       console.log(error);
-      throw new Error(error);
     }
   }
 
@@ -70,7 +66,6 @@ console.log(result)
       return result;
     } catch (error) {
       console.log(error);
-      throw new Error(error);
     }
   }
 
@@ -83,14 +78,16 @@ console.log(result)
       const url = `${ENV.API_URL}${ENV.ENDPOINTS.WISHLIST}?${urlParams}`;
 
       const response = await authFetch(url);
-      const result = await response.json();
 
-      if (response.status !== 200) throw result;
+      console.log(response)
+
+        const result = await response?.json();
+        if (response?.status !== 200) throw result;
+
 
       return result.data;
     } catch (error) {
       console.log(error);
-      throw new Error(error);
     }
   }
 }

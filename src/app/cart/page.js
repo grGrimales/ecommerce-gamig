@@ -22,20 +22,29 @@ export default function CartPage({ searchParams }) {
   const payment = JSON.parse(localStorage.getItem('PaymentProcess'));
 console.log(cart)
 
-  useEffect(() => {
-    (async () => {
-      try {
-        const data = [];
-        for (const item of cart) {
-          const response = await gameCtrl.getGameById(item.id);
-          data.push({ ...response.data, quantity: item.quantity });
-        }
-        setGames(data);
-      } catch (error) {
-        console.error(error);
+useEffect(() => {
+  (async () => {
+    try {
+      if (!Array.isArray(cart)) {
+        console.error('Cart is not iterable:', cart);
+        return;
       }
-    })();
-  }, [cart]);
+   if(cart.length > 0){
+    const data = [];
+    for (const item of cart) {
+      const response = await gameCtrl.getGameById(item.id);
+      console.log(response)
+      data.push({ ...response.data, quantity: item.quantity });
+    }
+    
+    setGames(data);
+   }
+    } catch (error) {
+      console.error(error);
+    }
+  })();
+}, [cart]);
+
 
 
   if ((!cart  || cart.length === 0 ) && (payment == false || !payment) ) {

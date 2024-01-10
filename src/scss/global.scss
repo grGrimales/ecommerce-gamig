@@ -27,3 +27,36 @@ a{
         color: $primary;
     }
 }
+
+.containerNotFound{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    flex-direction: column;
+
+    @include medium{
+        margin-top: 0 !important;
+    
+    }
+
+    p{
+        color: $text-secondary;
+        margin-bottom: 15px !important;
+    }
+    
+       > i{
+            font-size: 70px;
+            color: $success;
+        }
+    
+        h2{
+            font-size: 70px;
+            margin-bottom: 15px;
+        }
+    
+        a{
+            width: 300px;
+        }
+
+}

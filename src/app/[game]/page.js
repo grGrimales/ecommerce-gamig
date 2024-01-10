@@ -2,31 +2,41 @@ import { Game } from "@/api";
 import { BasicLayout } from "@/layouts";
 import { HeaderWallpaper, Info, Media, Panel } from "../components/Game";
 import { Separator } from "../components/Shared/Separator/Separator";
+import { notFound } from "next/navigation";
 
 
 
 
 export async function generateMetadata(params){
-  const gameCtrl = new Game();
-  const responseGame = await gameCtrl.getGamesBySlug(params.params.game);
-
-   return {
-     title: params.params.game,
-     description: responseGame.attributes.summary,
-     image: responseGame.attributes.wallpaper.data.attributes.url,
-   };
+   try {
+    const gameCtrl = new Game();
+    const responseGame = await gameCtrl.getGamesBySlug(params.params.game);
+  
+     return {
+       title: params.params.game,
+       description: responseGame.attributes.summary,
+       image: responseGame.attributes.wallpaper.data.attributes.url,
+     };
+   } catch (error) {
+    notFound();
+   }
 
 } 
 
 
 async function getData(game) {
-  const gameCtrl = new Game();
-  const responseGame = await gameCtrl.getGamesBySlug(game.game);
-  return {
-    props: {
-      game: responseGame,
-    },
-  };
+  try {
+    const gameCtrl = new Game();
+    const responseGame = await gameCtrl.getGamesBySlug(game.game);
+    return {
+      props: {
+        game: responseGame,
+      },
+    };
+  } catch (error) {
+    notFound();
+    
+  }
 }
 
 export default async function GamePage({ params, searchParams }) {

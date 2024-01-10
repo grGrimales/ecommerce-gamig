@@ -25,10 +25,11 @@ export async function authFetch(url, params) {
             ...params?.headers,
             Authorization: `Bearer ${token}`,
           },
+          cache: 'no-store'
         };
 
         try {
-          return await fetch(url, paramsTemp, {next: { revalidate: 10 }});
+          return await fetch(url, paramsTemp);
         } catch (error) {
           return error;
         }

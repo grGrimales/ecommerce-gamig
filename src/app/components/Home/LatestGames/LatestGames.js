@@ -1,3 +1,5 @@
+
+'use client';
 import { Game } from "@/api";
 import { useEffect, useState } from "react";
 import { Grid } from "semantic-ui-react";

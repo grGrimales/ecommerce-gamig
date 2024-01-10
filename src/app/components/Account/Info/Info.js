@@ -9,6 +9,8 @@ import { DateTime } from "luxon";
 export function Info(){
 
     const {user} = useAuth();
+
+    if(!user) return null;
     return(
         <div className={styles.info}>
         <Button icon className={styles.user}>

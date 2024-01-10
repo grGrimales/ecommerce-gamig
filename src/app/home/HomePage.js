@@ -1,3 +1,5 @@
+
+
 import { BasicLayout } from "@/layouts";
 import { BannerLastGamePublished, LatestGames } from "../components/Home";
 import { Separator } from "../components/Shared/Separator/Separator";
@@ -17,7 +19,6 @@ export default function HomePage() {
 
   return (
     <>
-    
     <BasicLayout>
       <BannerLastGamePublished />
       <Separator height={100} />

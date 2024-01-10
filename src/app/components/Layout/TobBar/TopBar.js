@@ -1,12 +1,18 @@
-
 "use client";
 import Link from "next/link";
 import styles from "./TopBar.module.scss";
 import { Image } from "semantic-ui-react";
-import {AccountPage} from "../Account/Account";
+import { AccountPage } from "../Account/Account";
 import { MenuPage } from "../Menu";
+import { useState } from "react";
+import { useEffect } from "react";
 
 export function TopBar({ isOpenSearch }) {
+
+ 
+
+
+
   return (
     <div className={styles.topBar}>
       <div className={styles.left}>
@@ -16,7 +22,10 @@ export function TopBar({ isOpenSearch }) {
       </div>
 
       <div className="center">
-    <MenuPage/>
+        <MenuPage
+          isOpenSearch={isOpenSearch}
+   
+        />
       </div>
 
       <div className={styles.right}>
