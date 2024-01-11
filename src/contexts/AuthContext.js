@@ -24,9 +24,7 @@ const router = useRouter();
 const pathname = usePathname()
   useEffect(() => {
     (async () => {
-      const token = tokenCtrl.getToken();
-        
-    loadPlatforms();
+      const token = tokenCtrl.getToken();    
       if (!token) {
         logout();
         setLoading(false);
@@ -40,6 +38,7 @@ const pathname = usePathname()
         await login(token);
       }
     })();
+    loadPlatforms();
   }, []);
 
 
