@@ -1,21 +1,19 @@
 import { Token } from "@/api";
+import { useRouter } from "next/navigation";
 
 export async function authFetch(url, params) {
   const tokenCtrl = new Token();
-
+  const router = useRouter();
   const token = tokenCtrl.getToken();
 
   const logout = () => {
     tokenCtrl.removeToken();
-    window.location.replace("/");
+    router.replace("/");
   };
 
   if (!token) {
     logout();
-  } else {
-    if (!token) {
-      logout(); 
-    } else {
+  }  else {
       if (tokenCtrl.hasExpired(token)) {
         logout();
       } else {
@@ -36,4 +34,3 @@ export async function authFetch(url, params) {
       }
     }
   }
-}
