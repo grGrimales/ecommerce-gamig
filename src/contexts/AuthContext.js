@@ -25,6 +25,8 @@ const pathname = usePathname()
   useEffect(() => {
     (async () => {
       const token = tokenCtrl.getToken();
+        
+    loadPlatforms();
       if (!token) {
         logout();
         setLoading(false);
@@ -41,17 +43,11 @@ const pathname = usePathname()
   }, []);
 
 
-  useEffect(() => {
-    const loadPlatforms = async () => {
-      const response = await platformCtrl.getAll();
-      setMenuItems(response.data);
-    };
   
-    loadPlatforms();
-
-  }, [])
-  
-  
+  const loadPlatforms = async () => {
+    const response = await platformCtrl.getAll();
+    setMenuItems(response.data);
+  };
 
   const login = async (token) => {
     try {
