@@ -50,6 +50,7 @@ export function AuthProvider(props) {
       tokenCtrl.setToken(token);
       const response = await userCtrl.getMe();
       setUser(response);
+      localStorage.setItem("user", JSON.stringify(response));
       setToken(token);
       setLoading(false);
     } catch (error) {
