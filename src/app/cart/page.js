@@ -14,7 +14,7 @@ export default function CartPage({ searchParams }) {
 
   const { step = 1 } = searchParams;
   const currentStep = Number(step);
-console.log('currentStep', currentStep);
+  console.log('currentStep', currentStep);
   const [games, setGames] = useState(null);
 
   const { cart } = useCart();

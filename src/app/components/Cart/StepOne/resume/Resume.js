@@ -40,7 +40,7 @@ export const Resume = ({ games }) => {
   const goToStepTwo = () => {
     localStorage.setItem("PaymentProcess", "false")
     const url = `${pathname}?step=2`; 
-    router.push(url);
+    router.replace(url);
   };
 
   if (!total) return null;
