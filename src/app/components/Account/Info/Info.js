@@ -17,7 +17,7 @@ export function Info(){
         </Button>
         <h3 className={styles.username}>{user?.username}</h3>
         <h4 className={styles.email}>{user?.email}</h4>
-        <p className={styles.createdAt}>Member since: {DateTime.fromISO(user?.createdAt, {locale: "en"}).toFormat("DDD")}</p>
+        {/* <p className={styles.createdAt}>Member since: {DateTime.fromISO(user?.createdAt, {locale: "en"}).toFormat("DDD")}</p> */}
         </div>
     )
 } 
