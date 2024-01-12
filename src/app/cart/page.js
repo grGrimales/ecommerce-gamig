@@ -11,9 +11,8 @@ import Link from "next/link";
 const gameCtrl = new Game();
 
 export default function CartPage({ searchParams }) {
-
-  const { step = 1 } = searchParams;
-  let currentStep = Number(step);
+  const { step } = searchParams;
+  let currentStep = Number(searchParams.step) || 1;
   console.log('currentStep', currentStep);
   const [games, setGames] = useState(null);
 
@@ -24,7 +23,9 @@ console.log(cart)
 
 useEffect(() => {
   currentStep = Number(searchParams.step);
+console.log(searchParams.step, 'searchParams.step')
 
+console.log('Typeof', typeof searchParams.step)
   console.log('currentStep- CAMBIO', currentStep);
 }, [searchParams]);
 
