@@ -22,7 +22,6 @@ export function MenuPage({ isOpenSearch, menuPlatform }) {
   }, [router.query]);
 
   const onSearch = (text) => {
-    console.log("Buscando...", text);
     router.replace(`/search?s=${text}`);
   };
 

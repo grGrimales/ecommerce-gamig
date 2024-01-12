@@ -4,14 +4,8 @@ import styles from "./TopBar.module.scss";
 import { Image } from "semantic-ui-react";
 import { AccountPage } from "../Account/Account";
 import { MenuPage } from "../Menu";
-import { useState } from "react";
-import { useEffect } from "react";
 
 export function TopBar({ isOpenSearch }) {
-
- 
-
-
 
   return (
     <div className={styles.topBar}>
