@@ -33,7 +33,7 @@ export function AccountPage() {
           <Icon name="cart"  />{" "}
           {total > 0 && <Label circular>{total}</Label>}
         </Button>
-        <Button icon className={classNames({ [styles.user]: user })} onClick={handleAccount}>
+        <Button icon className={classNames({ [styles.user]: user })} onClick={!user ? goToLogin : goToAccount }>
           <Icon name="user outline"  />
         </Button>
       </div>
