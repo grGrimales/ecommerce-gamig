@@ -17,7 +17,8 @@ import styles from "./TabPage.module.scss";
 
 export const TabPage = () => {
 
-    const { user, logout } = useAuth();
+    const {  logout } = useAuth();
+    const user = localStorage.getItem("user") && JSON.parse(localStorage.getItem("user"));
     const router = useRouter();
   
     const [reload, setReload] = useState(false);
