@@ -14,9 +14,6 @@ export function BasicLayout({
 
 }) {
 
-
-
-
   return (
     <>
         <TopBar isOpenSearch={isOpenSearch} 
@@ -27,11 +24,7 @@ export function BasicLayout({
             {isContainer ? <Container>{children}</Container> : children}
           </div>
         </Container>
-
-
-
         <Separator height={70} />
-
         <Footer />
     </>
   );
