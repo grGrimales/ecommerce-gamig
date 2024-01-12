@@ -6,9 +6,11 @@ import { useRouter } from "next/navigation";
 import { Button } from "semantic-ui-react";
 import Link from "next/link";
 import { usePathname, useSearchParams } from 'next/navigation'
+import { useCart } from "@/hooks";
 
 export const Resume = ({ games }) => {
   const pathname = usePathname()
+  const {  nextStep, previousStep } = useCart();
 
   const router = useRouter();
   const [total, setTotal] = useState(0);
@@ -38,9 +40,10 @@ export const Resume = ({ games }) => {
   }, [games]);
 
   const goToStepTwo = () => {
-    localStorage.setItem("PaymentProcess", "false")
-    const url = `${pathname}?step=2`; 
-    router.replace(url);
+    localStorage.setItem("PaymentProcess", "false");
+    nextStep();
+    // const url = `${pathname}?step=2`; 
+    // router.replace(url);
   };
 
   if (!total) return null;

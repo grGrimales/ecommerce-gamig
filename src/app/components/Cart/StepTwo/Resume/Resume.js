@@ -14,6 +14,7 @@ export const Resume = ({ games, addressesSelected }) => {
   const router = useRouter();
 
   const pathname = usePathname();
+  const {  nextStep, previousStep } = useCart();
 
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(false);
@@ -67,8 +68,9 @@ export const Resume = ({ games, addressesSelected }) => {
   };
 
   const goToStepEnd = () => {
-    const url = `${pathname}?step=3`;
-    router.push(url);
+    nextStep();
+    // const url = `${pathname}?step=3`;
+    // router.push(url);
   };
 
   if (!total) return null;

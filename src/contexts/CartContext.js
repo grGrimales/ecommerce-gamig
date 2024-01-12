@@ -12,6 +12,9 @@ export const CartContext = createContext();
 const cartCtrl = new Cart();
 export function CartProvider (props) {
     const  {children} = props;
+    const [currentStep, setCurrentStep] = useState(1);
+
+
 
     const  [cart, setCart] = useState(null);
     const [total, setTotal] = useState(cartCtrl.count());
@@ -21,6 +24,13 @@ export function CartProvider (props) {
     setCart(response);
     }, []);
 
+    const nextStep = () => {
+        setCurrentStep(currentStep + 1);
+      };
+      
+      const previousStep = () => {
+        setCurrentStep(currentStep - 1);
+      };
 
     const addCart = (gameId) => {
         cartCtrl.add(gameId);
@@ -51,6 +61,9 @@ export function CartProvider (props) {
     const data = {
         cart,
         total,
+        currentStep,
+        nextStep,
+        previousStep,
         addCart,
         deleteItem,
         deleteAllItems,
