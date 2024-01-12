@@ -13,7 +13,7 @@ const gameCtrl = new Game();
 export default function CartPage({ searchParams }) {
 
   const { step = 1 } = searchParams;
-  const currentStep = Number(step);
+  let currentStep = Number(step);
   console.log('currentStep', currentStep);
   const [games, setGames] = useState(null);
 
@@ -21,6 +21,12 @@ export default function CartPage({ searchParams }) {
 
   const payment = JSON.parse(localStorage.getItem('PaymentProcess'));
 console.log(cart)
+
+useEffect(() => {
+  currentStep = Number(searchParams.step);
+
+  console.log('currentStep- CAMBIO', currentStep);
+}, [searchParams]);
 
 useEffect(() => {
   (async () => {
