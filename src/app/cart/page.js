@@ -12,7 +12,7 @@ const gameCtrl = new Game();
 
 export default function CartPage({ searchParams }) {
   const { step } = searchParams;
-  let currentStep = Number(searchParams.step) || 1;
+  let currentStep = searchParams.step || 1;
   console.log('currentStep', currentStep);
   const [games, setGames] = useState(null);
 
@@ -22,7 +22,7 @@ export default function CartPage({ searchParams }) {
 console.log(cart)
 
 useEffect(() => {
-  currentStep = Number(searchParams.step);
+  currentStep = searchParams.step;
 console.log(searchParams.step, 'searchParams.step')
 
 console.log('Typeof', typeof searchParams.step)
@@ -31,6 +31,8 @@ console.log('Typeof', typeof searchParams.step)
 
 useEffect(() => {
   (async () => {
+
+    console.log('Cambio el carrito', cart)
     try {
       if (!Array.isArray(cart)) {
         console.error('Cart is not iterable:', cart);
@@ -72,9 +74,9 @@ useEffect(() => {
 
   return (
       <CartLayout step={step}>
-        {currentStep === 1 && <StepOne games={games} />}
-        {currentStep === 2 && <StepTwo games={games} />}
-        {currentStep === 3 && <StepThree/>}
+        {currentStep == 1 && <StepOne games={games} />}
+        {currentStep == 2 && <StepTwo games={games} />}
+        {currentStep == 3 && <StepThree/>}
       </CartLayout>
   );
 }
