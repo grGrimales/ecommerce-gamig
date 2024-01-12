@@ -9,9 +9,9 @@ import { BannerAd, BarTrust } from "../components/Shared";
 
 const platformsId = {
   playstation: 1,
+  nintendo: 2,
   xbox: 3,
   pc: 4,
-  nintendo: 2,
 };
 
 

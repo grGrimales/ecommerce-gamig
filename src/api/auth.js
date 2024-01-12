@@ -33,6 +33,7 @@ export class Auth{
                 headers: {
                     'Content-Type': 'application/json'
                 },
+                cache: 'no-store',
                 body: JSON.stringify(data),
             }
 

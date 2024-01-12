@@ -6,7 +6,6 @@ import styles from './WishlistIcon.module.scss';
 import { Wishlist } from '@/api/wishlist';
 import { useEffect, useState } from 'react';
 import { useAuth } from '@/hooks';
-import { set } from 'lodash';
 
 
 const wishlistCtrl = new Wishlist();

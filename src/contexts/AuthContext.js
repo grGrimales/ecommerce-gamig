@@ -1,10 +1,9 @@
 "use client";
-import { createContext, useState, useEffect, use } from "react";
-import { Platform, Token,  User } from "@/api";
-import { usePathname, useRouter } from "next/navigation";
+import { createContext, useState, useEffect } from "react";
+import { Platform, Token, User } from "@/api";
+
 
 const tokenCtrl = new Token();
-
 const userCtrl = new User();
 const platformCtrl = new Platform();
 
@@ -14,47 +13,45 @@ export function AuthProvider(props) {
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [menuItems, setMenuItems] = useState(null);
   const { children } = props;
-
-
-  const [menuItems, setMenuItems] = useState([])
-
-
-const router = useRouter();
-const pathname = usePathname()
+ 
   useEffect(() => {
     (async () => {
-      const token = tokenCtrl.getToken();    
+      const token = tokenCtrl.getToken();
+      loadPlatforms();
       if (!token) {
         logout();
         setLoading(false);
         return;
-      } 
-  
-      if(tokenCtrl.hasExpired(token)){
+      }
+
+      if (tokenCtrl.hasExpired(token)) {
         logout();
-       
-      }else{
+      } else {
         await login(token);
       }
     })();
-    loadPlatforms();
   }, []);
 
-
-  
   const loadPlatforms = async () => {
-    const response = await platformCtrl.getAll();
-    setMenuItems(response.data);
+    try {
+      const response = await platformCtrl.getAll();
+      setMenuItems(response.data);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    }
   };
 
   const login = async (token) => {
     try {
       tokenCtrl.setToken(token);
       const response = await userCtrl.getMe();
-       setUser(response);
-       setToken(token);
-       setLoading(false);
+      setUser(response);
+      setToken(token);
+      setLoading(false);
     } catch (error) {
       console.log(error);
       setLoading(false);
@@ -63,19 +60,17 @@ const pathname = usePathname()
 
   const logout = () => {
     tokenCtrl.removeToken();
-    localStorage.removeItem('PaymentProcess');
+    localStorage.removeItem("PaymentProcess");
     setUser(null);
     setToken(null);
-    const url = `${pathname}`; 
-    router.replace('/');
-  }
+  };
 
   const updatedUser = (key, value) => {
     setUser({
       ...user,
       [key]: value,
     });
-  }
+  };
   const data = {
     accessToken: token,
     user,
