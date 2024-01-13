@@ -2,9 +2,6 @@ import { ENV, authFetch } from "@/utils";
 
 export class Order {
   async getAll(userId) {
-    console.log(
-      'sssss'
-    )
     try {
       const filters = `filters[user][id][$eq]=${userId}`;
 
@@ -16,8 +13,6 @@ export class Order {
 
       const response = await authFetch(url);
       const data = await response?.json();
-
-      console.log(data)
       if (response?.status !== 200) throw data;
       return data;
     } catch (error) {

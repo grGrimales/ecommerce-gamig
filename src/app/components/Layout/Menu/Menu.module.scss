@@ -8,17 +8,35 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    padding: 10px 20px;
+    margin-top: 10px;
+    padding: 5px 4px;
     border-radius: 100px 0 0 100px;
     transition: all 0.3s ease-in-out;
+
+    @include medium{
+        margin-top: 0;
+    padding: 10px 20px;
+
+    }
 
 
     > a{
         display: flex;
         align-items: center;
-        padding: 20px 15px;
+        padding: 5px 15px;
         text-decoration: none;
         transition: all 0.3s ease-in-out;
+        display: flex;
+        flex-direction: column;
+
+        @include medium{
+            padding: 20px 10px;
+            flex-direction: row;
+        }
+
+        &:last-of-type{
+            margin-right: 14px;
+        }
     }
 
     img{
@@ -30,7 +48,7 @@
 
 .search{
     position: absolute;
-    top: 45px;
+    top: 52px;
     right: 0;
     background-color: $primary;
     display: flex;

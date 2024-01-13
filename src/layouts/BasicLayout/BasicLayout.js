@@ -19,7 +19,7 @@ export function BasicLayout({
         <TopBar isOpenSearch={isOpenSearch} 
         />
 
-        <Container fluid>
+        <Container fluid className={styles.container}>
           <div className={classNames({ [styles.relative]: relative })}>
             {isContainer ? <Container>{children}</Container> : children}
           </div>

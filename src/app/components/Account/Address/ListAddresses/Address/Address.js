@@ -25,7 +25,6 @@ export function Address({ addressId, address, onReload }) {
 
 
   const onDeleted = async () => {
-    console.log('eliminado');
     try {
       await addressCtrl.delete(addressId);
       onReload();

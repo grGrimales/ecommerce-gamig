@@ -16,7 +16,6 @@ export function Addresses({ addressesSelected, setAddressesSelected}) {
     (async () => {
       try {
         const response = await addressCtrl.getAll(user.id);
-        console.log(response)
         setAddresses(response.data);
       } catch (error) {
         console.error(error);

@@ -18,7 +18,6 @@ export const Orders = () => {
       try {
 
         const response = await orderCtrl.getAll(user.id);
-        console.log(response)
         setOrders(response?.data);
       } catch (error) {
         console.log(error);

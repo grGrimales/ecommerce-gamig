@@ -19,7 +19,6 @@ const {user} =  useAuth();
         onSubmit: async (formData) => {
           try {
              await userCtrl.updatedMe(user.id, formData);
-              console.log(formData);
           } catch (error) {
             console.log(error)
           }

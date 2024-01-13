@@ -15,16 +15,11 @@ export function AccountPage() {
 
   const goToAccount = () => router.push("/account");
   const goToCart = () => {
-    console.log('user', user);
     if (!user) goToLogin();
     else router.push("/cart");
   };
 
-  const handleAccount = () => {
-    console.log('user', user);
-    if (!user) goToLogin();
-    else goToAccount();
-  };
+ 
 
   return (
     <>

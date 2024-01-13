@@ -1,9 +1,9 @@
 
 'use client';
 import { Game } from "@/api";
-import { useEffect, useState } from "react";
-import { Grid } from "semantic-ui-react";
+import {  useEffect, useState } from "react";
 import { GridGames } from "../../Shared";
+import { LoadingPage } from "../../Shared/Loading/Loading";
 
 const gameCtrl = new Game();
 export function LatestGames({ title, limit = 9, platformId = null }) {

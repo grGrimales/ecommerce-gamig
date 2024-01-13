@@ -6,6 +6,7 @@ import { Separator } from "../components/Shared/Separator/Separator";
 import { Container } from "semantic-ui-react";
 import styles from "./HomePage.module.scss";
 import { BannerAd, BarTrust } from "../components/Shared";
+import { LoadingPage } from "../components/Shared/Loading/Loading";
 
 const platformsId = {
   playstation: 1,
@@ -47,11 +48,9 @@ export default function HomePage() {
         />
       </Container>
       <Separator height={100} />
-
     </BasicLayout>
     
     </>
-
  
   );
 }

@@ -60,7 +60,6 @@ export const Resume = ({ games, addressesSelected }) => {
         goToStepEnd();
         localStorage.setItem("PaymentProcess", "true")
       } else {
-        console.log("Error al realizar el pedido");
         localStorage.setItem("PaymentProcess", "false")
 
       }

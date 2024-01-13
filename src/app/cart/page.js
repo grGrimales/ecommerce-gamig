@@ -14,20 +14,13 @@ export default function CartPage({ searchParams }) {
   const [games, setGames] = useState(null);
 
   const { currentStep, nextStep, previousStep, cart } = useCart();
-  console.log("currentStep", currentStep);
 
   const payment = JSON.parse(localStorage.getItem("PaymentProcess"));
 
-  useEffect(() => {
-    console.log(searchParams.step, "searchParams.step");
 
-    console.log("Typeof", typeof searchParams.step);
-    console.log("currentStep- CAMBIO", currentStep);
-  }, [searchParams]);
 
   useEffect(() => {
     (async () => {
-      console.log("Cambio el carrito", cart);
       try {
         if (!Array.isArray(cart)) {
           console.error("Cart is not iterable:", cart);
@@ -37,7 +30,6 @@ export default function CartPage({ searchParams }) {
           const data = [];
           for (const item of cart) {
             const response = await gameCtrl.getGameById(item.id);
-            console.log(response);
             data.push({ ...response.data, quantity: item.quantity });
           }
 

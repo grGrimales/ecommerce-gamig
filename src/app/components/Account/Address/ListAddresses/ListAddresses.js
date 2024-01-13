@@ -20,7 +20,6 @@ export function ListAddresses({reload, onReload}) {
 
       try {
         const response = await addressCtrl.getAll(user.id);
-        console.log(response)
        if(response){
         setAddresses(response.data);
        }
