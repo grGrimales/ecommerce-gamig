@@ -29,7 +29,7 @@ export default function HomePage() {
       <Separator height={100} />
       <BarTrust />
       <Separator height={100} />
-      <Container>
+      <Container className={styles.elementoFadeIn}>
         <LatestGames
           title="PlayStation"
           limit={3}

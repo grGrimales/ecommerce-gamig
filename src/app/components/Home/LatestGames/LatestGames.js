@@ -1,7 +1,7 @@
 
 'use client';
 import { Game } from "@/api";
-import {  useEffect, useState } from "react";
+import {  Suspense, useEffect, useState } from "react";
 import { GridGames } from "../../Shared";
 import { LoadingPage } from "../../Shared/Loading/Loading";
 
@@ -27,7 +27,9 @@ export function LatestGames({ title, limit = 9, platformId = null }) {
   return (
     <div>
       <h2>{title}</h2>
-      <GridGames games={games} />
+      <Suspense fallback={<LoadingPage />}>
+        <GridGames games={games} />
+      </Suspense>
     </div>
   );
 }

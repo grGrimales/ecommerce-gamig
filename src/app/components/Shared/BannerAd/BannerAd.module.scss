@@ -11,6 +11,10 @@
         #154483 29%,
         #0f0f1b 73%
     );
+ 
+    animation-name: fadeIn;
+    animation-duration: 1s; /* Duración de 1 segundo */
+    animation-fill-mode: both; /* Mantiene el estado final después de completar la animación */
 
     &::after{
         content: "";
@@ -43,5 +47,14 @@
         font-weight: normal;
         font-size: 16px;
         margin-bottom: 20px;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
     }
 }

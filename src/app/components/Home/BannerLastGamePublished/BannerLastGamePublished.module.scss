@@ -4,6 +4,11 @@
 .container{
     position: relative;
     height: 600px;
+    transition: all 0.3s ease-in-out;
+        animation-name: fadeIn;
+        animation-duration: 1s; /* Duración de 1 segundo */
+        animation-fill-mode: both; /* Mantiene el estado final después de completar la animación */
+    
 
     &::after{
         content: "";
@@ -20,6 +25,7 @@
     height: 100%;
     width: 100%;
     object-fit: cover;
+    transition: all 0.3s ease-in-out;
 }
 
 .infoContainer{
@@ -51,4 +57,13 @@
      font-size: 30px;   
     }
 
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
