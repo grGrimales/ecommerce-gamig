@@ -12,7 +12,6 @@ export function Wishlist() {
   const [wishlist, setWishlist] = useState(null);
   const [reload, setReload] = useState(false);
 
-  console.log(wishlist);
   const { user } = useAuth();
 
   const handleReload = () => setReload(!reload); // [2] Crea una función para recargar la lista de deseos

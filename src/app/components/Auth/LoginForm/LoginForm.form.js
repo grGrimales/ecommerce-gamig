@@ -2,8 +2,8 @@ import * as Yup from "yup";
 
 export function initiValues() {
     return {
-            identifier: "",
-            password: "",
+            identifier: "lucia@gmail.com",
+            password: "123456",
             
     }
 }

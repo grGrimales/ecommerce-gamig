@@ -8,7 +8,6 @@ export function Info() {
   const user =
     localStorage.getItem("user") && JSON.parse(localStorage.getItem("user"));
 
-  console.log(user);
   return (
     <div className={styles.info}>
       <Button icon className={styles.user}>

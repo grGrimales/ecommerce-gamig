@@ -37,11 +37,9 @@ export class Address {
       };
 
 
-      console.log(url)
       const response = await authFetch(url, params);
       const result = await response?.json();
 
-      console.log('RESULT', result)
       if (response?.status !== 200) throw result;
       return result;
     } catch (error) {

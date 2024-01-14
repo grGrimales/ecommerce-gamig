@@ -5,7 +5,6 @@ import styles from "./Info.module.scss";
 
 export function Info({ game }) {
 
-    console.log(game)
   return (
     <Container className={styles.info}>
       <div className={styles.summary}>
