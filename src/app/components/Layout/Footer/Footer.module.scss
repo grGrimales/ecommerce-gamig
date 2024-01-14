@@ -3,7 +3,9 @@
 .footer {
   background-color: $background-tertiary;
   padding: 30px 0;
- 
+  animation-name: fadeIn;
+  animation-duration: 1s; /* Duración de 1 segundo */
+  animation-fill-mode: both; /* Mantiene el estado final después de completar la animación */
 }
 
 .columns {
@@ -45,4 +47,13 @@
     > span {
         color: $text-secondary;
     }
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
 }

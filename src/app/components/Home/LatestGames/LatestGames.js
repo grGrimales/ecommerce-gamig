@@ -3,7 +3,6 @@
 import { Game } from "@/api";
 import {  Suspense, useEffect, useState } from "react";
 import { GridGames } from "../../Shared";
-import { LoadingPage } from "../../Shared/Loading/Loading";
 
 const gameCtrl = new Game();
 export function LatestGames({ title, limit = 9, platformId = null }) {
@@ -27,9 +26,7 @@ export function LatestGames({ title, limit = 9, platformId = null }) {
   return (
     <div>
       <h2>{title}</h2>
-      <Suspense fallback={<LoadingPage />}>
         <GridGames games={games} />
-      </Suspense>
     </div>
   );
 }

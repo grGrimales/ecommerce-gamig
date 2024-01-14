@@ -2,15 +2,18 @@
 
 .contentSpinner{
     margin: 0 auto;
+    height: 100vh;
+    width: 100%;
+    z-index: 10;
+background-color: aqua;
 }
 
 .spinner {
-    margin: 100px auto;
+    margin: 300px auto;
     width: 40px;
     height: 40px;
     position: relative;
     text-align: center;
-
     -webkit-animation: sk-rotate 2.0s infinite linear;
     animation: sk-rotate 2.0s infinite linear;
 }

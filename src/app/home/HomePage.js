@@ -6,7 +6,8 @@ import { Separator } from "../components/Shared/Separator/Separator";
 import { Container } from "semantic-ui-react";
 import styles from "./HomePage.module.scss";
 import { BannerAd, BarTrust } from "../components/Shared";
-import { LoadingPage } from "../components/Shared/Loading/Loading";
+import { Loading } from "../components/Shared/Loading/Loading";
+import { Suspense } from "react";
 
 const platformsId = {
   playstation: 1,
@@ -19,8 +20,8 @@ const platformsId = {
 export default function HomePage() {
 
   return (
-    <>
     <BasicLayout>
+      <Suspense fallback= {<Loading/>}>
       <BannerLastGamePublished />
       <Separator height={100} />
       <div className={styles.container_game}>
@@ -47,10 +48,10 @@ export default function HomePage() {
           platformId={platformsId.xbox}
         />
       </Container>
+    
+    </Suspense>
       <Separator height={100} />
     </BasicLayout>
-    
-    </>
  
   );
 }

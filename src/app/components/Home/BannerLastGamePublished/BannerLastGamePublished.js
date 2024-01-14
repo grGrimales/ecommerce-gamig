@@ -1,6 +1,5 @@
-
-'use client';
-import {   useEffect, useState } from "react";
+"use client";
+import { Suspense, useEffect, useState } from "react";
 import styles from "./BannerLastGamePublished.module.scss";
 import { Game } from "@/api";
 import { Container, Image } from "semantic-ui-react";
@@ -8,7 +7,7 @@ import Link from "next/link";
 import { DateTime } from "luxon";
 import { calcDiscountedPrice } from "@/utils/functions";
 import { Discount } from "../../Shared";
-import { LoadingPage } from "../../Shared/Loading/Loading";
+import Loading from "../../Shared/Loading/Loading";
 
 const gameCtrl = new Game();
 export function BannerLastGamePublished() {
@@ -26,13 +25,19 @@ export function BannerLastGamePublished() {
   }, []);
 
   const wallpaper = game?.attributes.wallpaper;
-  const realeseDate = game ? new Date(game?.attributes.realeaseDate).toISOString() : "";
-  const price = calcDiscountedPrice(game?.attributes.price, game?.attributes.discount)
+  const realeseDate = game
+    ? new Date(game?.attributes.realeaseDate).toISOString()
+    : "";
+  const price = calcDiscountedPrice(
+    game?.attributes.price,
+    game?.attributes.discount
+  );
 
-
-  if (!game) return <LoadingPage/>;
+  if (!game) return <Loading />;
   return (
     <div className={styles.container}>
+      <Suspense fallback={<Loading />}>
+
       <Image src={wallpaper.data.attributes.url} className={styles.wallpaper} />
       <Link className={styles.infoContainer} href={game.attributes.slug}>
         <Container>
@@ -44,10 +49,11 @@ export function BannerLastGamePublished() {
           <p className={styles.price}>
             <Discount>-{game.attributes.discount} %</Discount>
             <span className={styles.finalPrice}>${price}</span>
-          
           </p>
         </Container>
       </Link>
+      </Suspense>
+     
     </div>
   );
 }
