@@ -1,8 +1,8 @@
 export const ENV = {
   //SERVER_HOST: 'http://localhost:1337',
   //API_URL: 'http://localhost:1337/api',
-  SERVER_HOST: "ecommerce-server-8qva4caon-grgrimales-projects.vercel.app/",
-  API_URL: "ecommerce-server-8qva4caon-grgrimales-projects.vercel.app/api",
+  SERVER_HOST: "https://ecommerce-server-nvqd.onrender.com/",
+  API_URL: "https://ecommerce-server-nvqd.onrender.com/api",
   ENDPOINTS: {
     AUTH: {
       REGISTER: "/auth/local/register",
